@@ -1,0 +1,17 @@
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "probe-run --chip STM32F103VE"
+
+#[build]
+#target = "thumbv7m-none-eabi"
+
+# use the Tlink.x scrip from the cortex-m-rt crate
+rustflags = [
+"-C", "link-arg=-Tlink.x",
+"-C", "link-arg=--nmagic",
+"-C", "link-arg=-Tdefmt.x",
+]
+
+[alias]
+test_pc = "test --target=x86_64-unknown-linux-gnu"
+build_stm32 = "build --target=thumbv7m-none-eabi"
