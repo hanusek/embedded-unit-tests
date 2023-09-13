@@ -7,7 +7,9 @@ use panic_halt as _;
 
 #[rtic::app(device = stm32f1xx_hal::pac)]
 mod app {
-    use crate::display::SevenSeg;
+    
+    use display::SevenSeg;
+
     use stm32f1xx_hal::{
         gpio::{
             gpiob::{PB12, PB13, PB15},
@@ -79,6 +81,7 @@ mod app {
             .expect("Timer setup error");
         timer.listen(Event::Update);
         
+        let channel_address = 1;
         let flag: bool = false;
         (
             Shared {

@@ -348,7 +348,7 @@ where
 #[cfg(test)]
 mod test {
     use super::*;
-    // use embedded_hal::digital::v2::{InputPin, OutputPin};
+
     use embedded_hal_mock::pin::{
         Mock as PinMock, State as PinState, Transaction as PinTransaction,
     };
